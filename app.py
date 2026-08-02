@@ -118,9 +118,19 @@ div[data-testid="stButton"] button{
 }
 div[data-testid="stButton"] button:hover{border-color:var(--ink-soft);color:var(--ink);background:transparent}
 div[data-testid="stButton"] button[kind="primary"]{
-  background:var(--accent);border-color:var(--accent);color:#FBF8F2;padding:.6rem 1.6rem
+  background:var(--accent);border-color:var(--accent);padding:.6rem 1.6rem
 }
-div[data-testid="stButton"] button[kind="primary"]:hover{background:#8E1D15;border-color:#8E1D15;color:#FBF8F2}
+div[data-testid="stButton"] button[kind="primary"],
+div[data-testid="stButton"] button[kind="primary"] p,
+div[data-testid="stButton"] button[kind="primary"] div,
+div[data-testid="stButton"] button[kind="primary"] span{
+  color:#FBF8F2 !important;font-weight:700 !important
+}
+div[data-testid="stButton"] button[kind="primary"]:hover{background:#8E1D15;border-color:#8E1D15}
+div[data-testid="stButton"] button[kind="primary"]:hover,
+div[data-testid="stButton"] button[kind="primary"]:hover p,
+div[data-testid="stButton"] button[kind="primary"]:hover div,
+div[data-testid="stButton"] button[kind="primary"]:hover span{color:#FBF8F2 !important}
 div[data-baseweb="tag"], span[data-baseweb="tag"]{border-radius:999px}
 </style>
 """
@@ -173,7 +183,7 @@ def matches(film, moods, decades, lengths):
 def spin_html(title):
     return (
         '<div class="kb-frame kb-spin">'
-        '<p class="kb-meta">szpula się kręci</p>'
+        '<p class="kb-meta">Zdaj się na kinowe przeznaczenie</p>'
         f'<p class="kb-film">{title}</p>'
         '<p class="kb-hook">…</p>'
         "</div>"
@@ -182,10 +192,11 @@ def spin_html(title):
 
 def card_html(film):
     if film.get("filmweb_url"):
-        filmweb_link = film["filmweb_url"]
+        link = film["filmweb_url"]
     else:
-        query = urllib.parse.quote_plus(f"{film['title']} {film['year']}")
-        filmweb_link = f"https://www.filmweb.pl/search?q={query}"
+        query = urllib.parse.quote_plus(f"{film['title']} {film['year']} film filmweb")
+        link = f"https://www.google.com/search?q={query}"
+    link_label = "Przejdźmy do konkretów"
     if film.get("quote"):
         line = (
             '<blockquote class="kb-quote">'
@@ -201,13 +212,13 @@ def card_html(film):
     tags = "".join(f'<span class="kb-tag">{MOOD_BY_KEY[m]}</span>' for m in film["moods"])
     return (
         '<div class="kb-frame">'
-        f'<p class="kb-meta">{film["year"]} · {time_text(film["minutes"])} · reż. {film["director"]}</p>'
+        f'<p class="kb-meta">{film["year"]}&nbsp;&nbsp;&nbsp;{time_text(film["minutes"])}&nbsp;&nbsp;&nbsp;reż. {film["director"]}</p>'
         f'<p class="kb-film">{film["title"]}</p>'
         f"{line}"
         f'<p class="kb-hook">{film["hook"]}</p>'
         f'<div class="kb-tags">{tags}</div>'
         '<div class="kb-links">'
-        f'<a href="{filmweb_link}" target="_blank" rel="noopener">Filmweb</a>'
+        f'<a href="{link}" target="_blank" rel="noopener">{link_label}</a>'
         "</div></div>"
     )
 
@@ -239,12 +250,11 @@ def reset_filters():
     st.session_state.f_len = []
 
 
-st.markdown(f'<p class="kb-eyebrow">Kartoteka · {len(FILMS)} tytułów</p>', unsafe_allow_html=True)
+st.markdown(f'<p class="kb-eyebrow">Kartoteka&nbsp;&nbsp;&nbsp;{len(FILMS)} tytułów</p>', unsafe_allow_html=True)
 st.markdown('<h1 class="kb-title">Polska klasyka<br><em>na dziś wieczór</em></h1>', unsafe_allow_html=True)
 st.markdown(
-    '<p class="kb-lede">Od kina przedwojennego po nową klasykę. Ustaw nastrój, dekadę '
-    "i długość, zakręć szpulą — wypadnie jeden tytuł z kwestią, którą wszyscy znają, "
-    "i linkiem do sprawdzenia, gdzie akurat leci.</p>",
+    '<p class="kb-lede">Masz ochotę na polskie kino, ale nie wiesz co wybrać? Ustaw nastrój, '
+    "dekadę i długość filmu, a resztę zostaw losowi i odkryj swoje filmowe przeznaczenie.</p>",
     unsafe_allow_html=True,
 )
 st.markdown('<div class="kb-strip"></div>', unsafe_allow_html=True)
@@ -254,9 +264,9 @@ if LOAD_WARNINGS:
         for w in LOAD_WARNINGS:
             st.write("• " + w)
 
-st.markdown('<p class="kb-label">Nastrój</p>', unsafe_allow_html=True)
+st.markdown('<p class="kb-label">Rodzaj</p>', unsafe_allow_html=True)
 mood_labels = st.pills(
-    "Nastrój",
+    "Rodzaj",
     [label for _, label in MOODS],
     selection_mode="multi",
     key="f_mood",
