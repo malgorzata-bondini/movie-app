@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Kartoteka — polska klasyka
 
 Losowanie polskiego klasyka na wieczór: filtry (nastrój, dekada, długość), animowane losowanie i karta z cytatem lub zapamiętaną sceną oraz linkami do JustWatch i Filmwebu. Baza: 129 tytułów, od kina przedwojennego po nową klasykę — trzymana w zwykłym pliku Excela.
@@ -49,3 +50,7 @@ Zakładka **Instrukcja** ma tę samą ściągawkę wewnątrz pliku. Wypełnij Cy
 Zapisz plik, wgraj go na GitHuba w miejsce starego `filmy.xlsx` (przez przeglądarkę: wejdź w plik w repo → *Edit* / *Upload file* → zamień) — Streamlit Cloud przebuduje aplikację sam.
 
 **Kontrola błędów:** jeśli w wierszu zabraknie roku, czasu, cytatu+sceny albo wpiszesz nastrój spoza listy, aplikacja nie wywali się — pominie ten wiersz i pokaże na górze strony rozwijane ostrzeżenie z numerem wiersza i opisem problemu, żeby łatwo było go poprawić.
+=======
+# movie-app
+A simple movie picker for discovering Polish cinema, from pre-war films to modern classics.
+>>>>>>> 1bea33f7d809d2e434a9204e1b9850102aa64d2b
