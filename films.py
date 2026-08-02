@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 
 MOODS = [
-    ("smiech", "Śmiech"),
+    ("smiech", "Komedia"),
     ("prl", "PRL"),
     ("wojna", "Wojna"),
     ("egz", "Egzystencjalne"),
@@ -13,6 +13,7 @@ MOODS = [
     ("kostium", "Kostium"),
     ("obycz", "Obyczajowe"),
     ("surreal", "Kino osobne"),
+    ("musical", "Musicale"),
 ]
 
 DECADES = [
