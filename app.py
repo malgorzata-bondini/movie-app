@@ -200,7 +200,7 @@ def card_html(film):
     if film.get("quote"):
         line = (
             '<blockquote class="kb-quote">'
-            '<span class="kb-block">Weszło do języka</span>'
+            '<span class="kb-block">Sławny cytat</span>'
             f'„{film["quote"]}”</blockquote>'
         )
     else:
@@ -304,7 +304,18 @@ with right:
     st.button("Wyczyść filtry", use_container_width=True, on_click=reset_filters)
 
 if pool:
-    st.markdown(f'<p class="kb-count">{len(pool)} z {len(FILMS)} tytułów w puli</p>', unsafe_allow_html=True)
+    remaining = sum(1 for f in pool if film_id(f) not in st.session_state.seen)
+    filtered = len(pool) < len(FILMS)
+    if remaining < len(pool):
+        extra = f" ({len(FILMS)} ogółem)" if filtered else ""
+        st.markdown(
+            f'<p class="kb-count">{remaining} jeszcze do wylosowania z {len(pool)} w puli{extra}</p>',
+            unsafe_allow_html=True,
+        )
+    elif filtered:
+        st.markdown(f'<p class="kb-count">{len(pool)} z {len(FILMS)} tytułów w puli</p>', unsafe_allow_html=True)
+    else:
+        st.markdown(f'<p class="kb-count">{len(pool)} tytułów w puli</p>', unsafe_allow_html=True)
 else:
     st.markdown('<p class="kb-count">brak dopasowań, zdejmij jeden filtr</p>', unsafe_allow_html=True)
 
