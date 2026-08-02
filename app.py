@@ -183,7 +183,7 @@ def matches(film, moods, decades, lengths):
 def spin_html(title):
     return (
         '<div class="kb-frame kb-spin">'
-        '<p class="kb-meta">Zdaj się na kinowe przeznaczenie</p>'
+        '<p class="kb-meta">Kinematograficzne przeznaczenie</p>'
         f'<p class="kb-film">{title}</p>'
         '<p class="kb-hook">…</p>'
         "</div>"
