@@ -9,7 +9,7 @@ from films import DECADES, LENGTHS, MOODS, load_films
 FILMS, LOAD_WARNINGS = load_films()
 
 st.set_page_config(
-    page_title="Kartoteka — polska klasyka",
+    page_title="Kartoteka polska klasyka",
     page_icon="🎞",
     layout="centered",
 )
@@ -194,7 +194,7 @@ def card_html(film):
     if film.get("filmweb_url"):
         link = film["filmweb_url"]
     else:
-        query = urllib.parse.quote_plus(f"{film['title']} {film['year']} film filmweb")
+        query = urllib.parse.quote_plus(f"{film['title']} {film['year']}")
         link = f"https://www.google.com/search?q={query}"
     link_label = "Przejdźmy do konkretów"
     if film.get("quote"):
@@ -306,7 +306,7 @@ with right:
 if pool:
     st.markdown(f'<p class="kb-count">{len(pool)} z {len(FILMS)} tytułów w puli</p>', unsafe_allow_html=True)
 else:
-    st.markdown('<p class="kb-count">brak dopasowań — zdejmij jeden filtr</p>', unsafe_allow_html=True)
+    st.markdown('<p class="kb-count">brak dopasowań, zdejmij jeden filtr</p>', unsafe_allow_html=True)
 
 slot = st.empty()
 pick = st.session_state.pick
@@ -320,7 +320,7 @@ if pick and matches(pick, moods, decades, lengths):
             time.sleep(delay)
             delay *= 1.18
     slot.markdown(card_html(pick), unsafe_allow_html=True)
-    if st.button("nie to — kręć dalej", disabled=not pool):
+    if st.button("nie to, kręć dalej", disabled=not pool):
         draw(pool)
         st.rerun()
 elif pool:
