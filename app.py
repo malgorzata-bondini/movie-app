@@ -336,8 +336,8 @@ if pick and matches(pick, moods, decades, lengths):
         st.rerun()
 elif pool:
     slot.markdown(
-        '<div class="kb-frame"><p class="kb-empty">Naciśnij „Losuj”, '
-        "a karta zapełni się tytułem.</p></div>",
+        '<div class="kb-frame"><p class="kb-empty">Naciśnij „Losuj” '
+        "i odkryj swoje filmowe przeznaczenie.</p></div>",
         unsafe_allow_html=True,
     )
 else:
