@@ -52,7 +52,7 @@ def load_films(path: str = "filmy.xlsx"):
     films = []
     warnings = []
     for i, row in df.iterrows():
-        excel_row = int(str(i)) + 2  # +1 za nagłówek, +1 bo pandas liczy od 0
+        excel_row = i + 2  # +1 za nagłówek, +1 bo pandas liczy od 0
         title = str(row["Tytuł"]).strip() if pd.notna(row["Tytuł"]) else ""
         if not title:
             continue  # pusty wiersz na dole arkusza — pomijamy bez ostrzeżenia
@@ -101,6 +101,17 @@ def load_films(path: str = "filmy.xlsx"):
             film["quote"] = quote
         else:
             film["scene"] = scene
+
+        if "Link Filmweb" in df.columns:
+            fw_link = str(row["Link Filmweb"]).strip() if pd.notna(row["Link Filmweb"]) else ""
+            if fw_link:
+                if fw_link.startswith("https://www.filmweb.pl/"):
+                    film["filmweb_url"] = fw_link
+                else:
+                    warnings.append(
+                        f"Wiersz {excel_row} ({title}): Link Filmweb nie zaczyna się od "
+                        "https://www.filmweb.pl/ — zignorowano, użyto wyszukiwarki."
+                    )
         films.append(film)
 
     return films, warnings

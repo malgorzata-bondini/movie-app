@@ -38,7 +38,7 @@ Bo czasem jednak wiesz, czego chcesz, i to jest ok.
 
 - **129 filmów** — od kina przedwojennego (*Piętro wyżej*, 1937) po *Boże Ciało* (2019). Wszystko, co powinnaś była obejrzeć w liceum, a obejrzałaś dopiero teraz, bo apka Ci kazała.
 - **Losowanie bez powtórek** — dopóki nie przejdzie przez całą pulę pasującą do filtrów. Apka pamięta, co już wylosowałaś, więc nie oglądasz *Vabanku* piąty raz z rzędu (chyba że naprawdę chcesz, wtedy filtruj węziej).
-- **Linki do JustWatch i Filmwebu** — bo apka nie wie, gdzie akurat leci dany tytuł (to się zmienia co miesiąc), więc grzecznie odsyła Cię tam, gdzie faktycznie to sprawdzisz.
+- **Link do Filmwebu** — jeśli w arkuszu jest wypełniona kolumna „Link Filmweb", prowadzi prosto na stronę filmu; jeśli nie, spada na wyszukiwarkę Filmwebu (czasem trafia od razu, czasem pokazuje listę wyników — wtedy warto dopisać link ręcznie, patrz niżej).
 - **Baza w Excelu, nie w kodzie** — dopisujesz film jak zwykły wiersz w tabeli, nie musisz znać Pythona. Prawdziwy przełom cywilizacyjny.
 
 ## Dla dociekliwych: jak to jest zbudowane
@@ -84,6 +84,7 @@ Otwórz `filmy.xlsx`, zakładka **Filmy**, dopisz wiersz na dole:
 | Cytat | tylko jeśli masz stuprocentową pewność co do słowa |
 | Scena | jedno zdanie o zapamiętanym obrazie, gdy Cytatu nie ma |
 | Zdanie | jedno zdanie, o czym jest film |
+| Link Filmweb | opcjonalne — wklej dokładny adres strony filmu (np. `https://www.filmweb.pl/film/Pan+Tadeusz-1999-630`), jeśli wiesz, że wyszukiwarka nie trafia we właściwy tytuł. Puste pole = apka sama zbuduje link do wyszukiwania. |
 
 Wypełnij Cytat **albo** Scenę — jedno wystarczy. Zapisz, wgraj na GitHuba w miejsce starego pliku, gotowe.
 

@@ -26,10 +26,22 @@ STYLE = """
   --muted:#8B8677;
   --rule:#D8D3C4;
   --accent:#A6231A;
+  color-scheme: light only;
 }
-[data-testid="stAppViewContainer"], [data-testid="stHeader"]{background:var(--paper)}
+html{color-scheme:light only}
+html, body,
+[data-testid="stApp"],
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stHeader"],
+[data-testid="stBottomBlockContainer"],
+[data-testid="stSidebar"]{
+  background:var(--paper) !important;
+  color:var(--ink) !important;
+}
 .block-container{max-width:900px;padding-top:3rem;padding-bottom:5rem}
 html, body, [class*="st-"]{font-family:"IBM Plex Sans",system-ui,sans-serif}
+p, span, div, label{color:var(--ink)}
 
 .kb-eyebrow{
   font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.18em;
@@ -91,11 +103,13 @@ html, body, [class*="st-"]{font-family:"IBM Plex Sans",system-ui,sans-serif}
   letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
   border:1px solid var(--rule);padding:4px 9px;border-radius:2px;margin:0 6px 6px 0
 }
+div[data-testid="stMarkdownContainer"] .kb-links a,
 .kb-links a{
-  color:var(--ink);font-weight:500;font-size:.92rem;text-decoration:none;
+  color:var(--ink) !important;font-weight:500;font-size:.92rem;text-decoration:none !important;
   border-bottom:1px solid var(--accent);padding-bottom:2px;margin-right:20px
 }
-.kb-links a:hover{color:var(--accent)}
+div[data-testid="stMarkdownContainer"] .kb-links a:hover,
+.kb-links a:hover{color:var(--accent) !important}
 .kb-empty{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:.85rem;margin:0}
 
 div[data-testid="stButton"] button{
@@ -167,7 +181,11 @@ def spin_html(title):
 
 
 def card_html(film):
-    query = urllib.parse.quote_plus(f"{film['title']} {film['year']}")
+    if film.get("filmweb_url"):
+        filmweb_link = film["filmweb_url"]
+    else:
+        query = urllib.parse.quote_plus(f"{film['title']} {film['year']}")
+        filmweb_link = f"https://www.filmweb.pl/search?q={query}"
     if film.get("quote"):
         line = (
             '<blockquote class="kb-quote">'
@@ -189,8 +207,7 @@ def card_html(film):
         f'<p class="kb-hook">{film["hook"]}</p>'
         f'<div class="kb-tags">{tags}</div>'
         '<div class="kb-links">'
-        f'<a href="https://www.justwatch.com/pl/szukaj?q={query}" target="_blank">Gdzie to obejrzeć</a>'
-        f'<a href="https://www.filmweb.pl/search?q={query}" target="_blank">Filmweb</a>'
+        f'<a href="{filmweb_link}" target="_blank" rel="noopener">Filmweb</a>'
         "</div></div>"
     )
 
@@ -212,6 +229,14 @@ def draw(pool):
     st.session_state.pick = pick
     st.session_state.seen.add(film_id(pick))
     st.session_state.spin = True
+
+
+def reset_filters():
+    # Uruchamiane jako on_click: wykonuje się PRZED ponownym narysowaniem
+    # widżetów st.pills, więc wolno tu bezpiecznie nadpisać ich stan.
+    st.session_state.f_mood = []
+    st.session_state.f_dec = []
+    st.session_state.f_len = []
 
 
 st.markdown(f'<p class="kb-eyebrow">Kartoteka · {len(FILMS)} tytułów</p>', unsafe_allow_html=True)
@@ -266,11 +291,7 @@ with left:
         draw(pool)
         st.rerun()
 with right:
-    if st.button("Wyczyść filtry", use_container_width=True):
-        st.session_state.f_mood = []
-        st.session_state.f_dec = []
-        st.session_state.f_len = []
-        st.rerun()
+    st.button("Wyczyść filtry", use_container_width=True, on_click=reset_filters)
 
 if pool:
     st.markdown(f'<p class="kb-count">{len(pool)} z {len(FILMS)} tytułów w puli</p>', unsafe_allow_html=True)
