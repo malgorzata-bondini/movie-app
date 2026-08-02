@@ -1,56 +1,94 @@
-<<<<<<< HEAD
-# Kartoteka — polska klasyka
+# 🎞️ Kartoteka — polska klasyka na dziś wieczór
 
-Losowanie polskiego klasyka na wieczór: filtry (nastrój, dekada, długość), animowane losowanie i karta z cytatem lub zapamiętaną sceną oraz linkami do JustWatch i Filmwebu. Baza: 129 tytułów, od kina przedwojennego po nową klasykę — trzymana w zwykłym pliku Excela.
+*Bo od trzydziestu minut scrollujesz Netflixa i dalej nic nie wybrałaś.*
 
-## Pliki
+Ta aplikacja rozwiązuje dokładnie jeden problem: **nie potrafisz się zdecydować, co obejrzeć**. Zamiast przeglądać katalog po raz siedemnasty, ustawiasz nastrój, dekadę i długość, klikasz jeden przycisk — i już, decyzja podjęta za Ciebie, obwiniaj apkę, nie siebie.
 
-| plik | co zawiera |
+129 polskich klasyków. Zero paraliżu decyzyjnego. Sto procent szans, że i tak obejrzysz coś innego.
+
+---
+
+## Wygląda tak
+
+![Nagłówek aplikacji](screenshots/hero.png)
+
+Papierowo-beżowa kolorystyka i czerwony akcent, bo skoro kartoteka, to niech wygląda jak kartoteka, a nie jak kolejny czarny dashboard z gradientem.
+
+## Wybierasz filtry jak profesjonalny kinoman
+
+![Filtry: nastrój, dekada, długość](screenshots/filtry.png)
+
+Nastrój, dekada, długość. Trzy suwaki decyzyjności, żebyś mogła udawać, że to Ty wybierasz, a nie ślepy los.
+
+## …i klikasz „Losuj”
+
+![Karta z wynikiem losowania](screenshots/karta.png)
+
+Szpula się kręci (dosłownie — animowana perforacja jak w prawdziwym projektorze), tytuły migają, aż wyląduje jeden. Do kompletu: rok, reżyser, czas trwania, jedno zdanie o co chodzi, i albo słynny cytat („Kargul, podejdź no do płota”), albo scena, którą się pamięta, gdy nie mam stuprocentowej pewności co do brzmienia kwestii.
+
+## Cała kartoteka, jakbyś jednak chciała przeglądać ręcznie
+
+![Rozwijana lista katalogu](screenshots/katalog.png)
+
+Bo czasem jednak wiesz, czego chcesz, i to jest ok.
+
+---
+
+## Co tu naprawdę siedzi
+
+- **129 filmów** — od kina przedwojennego (*Piętro wyżej*, 1937) po *Boże Ciało* (2019). Wszystko, co powinnaś była obejrzeć w liceum, a obejrzałaś dopiero teraz, bo apka Ci kazała.
+- **Losowanie bez powtórek** — dopóki nie przejdzie przez całą pulę pasującą do filtrów. Apka pamięta, co już wylosowałaś, więc nie oglądasz *Vabanku* piąty raz z rzędu (chyba że naprawdę chcesz, wtedy filtruj węziej).
+- **Linki do JustWatch i Filmwebu** — bo apka nie wie, gdzie akurat leci dany tytuł (to się zmienia co miesiąc), więc grzecznie odsyła Cię tam, gdzie faktycznie to sprawdzisz.
+- **Baza w Excelu, nie w kodzie** — dopisujesz film jak zwykły wiersz w tabeli, nie musisz znać Pythona. Prawdziwy przełom cywilizacyjny.
+
+## Dla dociekliwych: jak to jest zbudowane
+
+Bez owijania w bawełnę:
+
+| Plik | Rola |
 | --- | --- |
-| `app.py` | cały interfejs i logika losowania |
-| `filmy.xlsx` | **baza filmów — tu dopisujesz nowe tytuły** (arkusz „Filmy” + arkusz „Instrukcja”) |
-| `films.py` | stałe listy filtrów (nastroje/dekady/długości) + funkcja wczytująca `filmy.xlsx` |
-| `requirements.txt` | zależności: Streamlit, pandas, openpyxl |
-| `.streamlit/config.toml` | paleta kolorów |
+| `app.py` | cały interfejs, filtry, logika losowania |
+| `filmy.xlsx` | baza filmów — **tu dopisujesz nowe tytuły**, zakładka „Filmy” + ściągawka w „Instrukcja” |
+| `films.py` | listy filtrów (nastroje/dekady/długości) + wczytywanie `filmy.xlsx` |
+| `requirements.txt` | Streamlit, pandas, openpyxl |
+| `.streamlit/config.toml` | ta beżowo-czerwona paleta, o której była mowa wyżej |
 
-## Lokalnie
+### Uruchomienie lokalnie
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Publikacja na Streamlit Community Cloud
+### Publikacja na Streamlit Community Cloud
 
-1. Utwórz publiczne repozytorium na GitHubie i wrzuć do niego wszystkie pliki, zachowując katalog `.streamlit/` (w tym `filmy.xlsx` — to plik binarny, wrzuć go tak jak jest, bez otwierania w edytorze tekstu).
-2. Wejdź na https://share.streamlit.io i zaloguj się kontem GitHub.
+1. Wrzuć wszystkie pliki na GitHuba, z zachowaniem `.streamlit/` (tak, ten folder z kropką — to nie błąd).
+2. [share.streamlit.io](https://share.streamlit.io) → zaloguj się kontem GitHub.
 3. **Create app → Deploy a public app from GitHub**.
-4. Wskaż repozytorium, gałąź `main` i plik główny `app.py`.
-5. **Deploy**. Po chwili dostaniesz adres w formacie `https://<nazwa>.streamlit.app` — publiczny, do wysłania komukolwiek.
+4. Repozytorium, branch `main`, plik główny `app.py`.
+5. **Deploy** i czekaj minutę-dwie.
 
-Każdy push na `main` przebudowuje aplikację automatycznie.
+Każdy kolejny push na `main` przebudowuje appkę samodzielnie — nawet nie musisz nic klikać na Streamlit Cloud.
 
-## Dopisywanie filmów — w Excelu
+### Dopisywanie filmów (bez pisania kodu, obiecuję)
 
-Otwórz `filmy.xlsx`, zakładka **Filmy**. Dopisz wiersz na dole tabeli z kolumnami:
+Otwórz `filmy.xlsx`, zakładka **Filmy**, dopisz wiersz na dole:
 
-| kolumna | co wpisać |
+| Kolumna | Co wpisać |
 | --- | --- |
-| Tytuł | dokładny tytuł filmu |
-| Reżyser | imię i nazwisko (kilku — oddziel przecinkiem) |
-| Rok | rok premiery, sama liczba |
-| Czas (min) | długość w minutach, sama liczba |
-| Nastroje | jeden lub kilka z: Śmiech, PRL, Wojna, Egzystencjalne, Kryminał, Kostium, Obyczajowe, Kino osobne — oddzielone przecinkiem |
-| Cytat | zweryfikowana kwestia z filmu — zostaw puste, jeśli nie masz pewności co do słowa |
-| Scena | jedno zdanie o zapamiętanym obrazie — używane, gdy Cytat jest pusty |
+| Tytuł | dokładny tytuł |
+| Reżyser | imię i nazwisko (kilku — przecinkiem) |
+| Rok | sama liczba |
+| Czas (min) | sama liczba |
+| Nastroje | z listy: Śmiech, PRL, Wojna, Egzystencjalne, Kryminał, Kostium, Obyczajowe, Kino osobne — przecinkiem |
+| Cytat | tylko jeśli masz stuprocentową pewność co do słowa |
+| Scena | jedno zdanie o zapamiętanym obrazie, gdy Cytatu nie ma |
 | Zdanie | jedno zdanie, o czym jest film |
 
-Zakładka **Instrukcja** ma tę samą ściągawkę wewnątrz pliku. Wypełnij Cytat **albo** Scenę (jedno wystarczy), zawsze uzupełnij Zdanie.
+Wypełnij Cytat **albo** Scenę — jedno wystarczy. Zapisz, wgraj na GitHuba w miejsce starego pliku, gotowe.
 
-Zapisz plik, wgraj go na GitHuba w miejsce starego `filmy.xlsx` (przez przeglądarkę: wejdź w plik w repo → *Edit* / *Upload file* → zamień) — Streamlit Cloud przebuduje aplikację sam.
+Jeśli coś schrzanisz w wierszu (brak roku, zły nastrój, zero cytatu i sceny naraz) — apka się nie wywali. Po prostu pominie ten wiersz i pokaże ostrzeżenie na górze strony z numerem wiersza, żebyś wiedziała, co poprawić. Miła jest.
 
-**Kontrola błędów:** jeśli w wierszu zabraknie roku, czasu, cytatu+sceny albo wpiszesz nastrój spoza listy, aplikacja nie wywali się — pominie ten wiersz i pokaże na górze strony rozwijane ostrzeżenie z numerem wiersza i opisem problemu, żeby łatwo było go poprawić.
-=======
-# movie-app
-A simple movie picker for discovering Polish cinema, from pre-war films to modern classics.
->>>>>>> 1bea33f7d809d2e434a9204e1b9850102aa64d2b
+---
+
+*Made with 🎬, Streamlit i lekką obsesją na punkcie polskiego kina moralnego niepokoju.*

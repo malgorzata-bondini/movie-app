@@ -262,7 +262,7 @@ pool = [f for f in FILMS if matches(f, moods, decades, lengths)]
 st.write("")
 left, right, _ = st.columns([2, 2, 3])
 with left:
-    if st.button("Zakręć szpulą", type="primary", use_container_width=True, disabled=not pool):
+    if st.button("Losuj", type="primary", use_container_width=True, disabled=not pool):
         draw(pool)
         st.rerun()
 with right:
@@ -294,7 +294,7 @@ if pick and matches(pick, moods, decades, lengths):
         st.rerun()
 elif pool:
     slot.markdown(
-        '<div class="kb-frame"><p class="kb-empty">Naciśnij „Zakręć szpulą”, '
+        '<div class="kb-frame"><p class="kb-empty">Naciśnij „Losuj”, '
         "a karta zapełni się tytułem.</p></div>",
         unsafe_allow_html=True,
     )
