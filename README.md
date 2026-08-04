@@ -1,10 +1,10 @@
-# 🎞️ Kartoteka - polska klasyka na dziś wieczór
+# 🎞️ Kartoteka: polska klasyka na dziś wieczór
 
-*Bo od trzydziestu minut scrollujesz Netflixa i dalej nic nie wybrałaś.*
+*Bo od trzydziestu minut scrollujesz Netflixa i dalej nic.*
 
-Ta aplikacja rozwiązuje dokładnie jeden problem: **nie potrafisz się zdecydować, co obejrzeć**. Zamiast przeglądać katalog po raz siedemnasty, ustawiasz nastrój, dekadę i długość, klikasz jeden przycisk — i już, decyzja podjęta za Ciebie, obwiniaj apkę, nie siebie.
+Ta aplikacja rozwiązuje dokładnie jeden problem: **nie potrafisz się zdecydować, co obejrzeć**. Zamiast przeglądać katalog po raz siedemnasty, ustawiasz nastrój, dekadę i długość, klikasz jeden przycisk iiii już, decyzja podjęta za Ciebie, obwiniaj apkę, nie siebie.
 
-129 polskich klasyków. Zero paraliżu decyzyjnego. Sto procent szans, że i tak obejrzysz coś innego.
+130 polskich klasyków. Zero paraliżu decyzyjnego. 
 
 ---
 
