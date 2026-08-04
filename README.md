@@ -2,7 +2,7 @@
 
 *Bo od trzydziestu minut scrollujesz Netflixa i dalej nic.*
 
-Ta aplikacja przyda się, kiedy **nie potrafisz się zdecydować, co obejrzeć**. Zamiast przeglądać katalog po raz siedemnasty, ustawiasz nastrój, dekadę i długość, klikasz jeden przycisk iiii już, decyzja podjęta za Ciebie, obwiniaj apkę, nie siebie.
+Ta aplikacja przyda się, kiedy **nie potrafisz się zdecydować, co obejrzeć**. Zamiast przeglądać katalog po raz siedemnasty, ustawiasz nastrój, dekadę i długość, klikasz jeden przycisk iiii już, decyzja podjęta za Ciebie. Obwiniaj apkę, nie siebie.
 
 130 polskich klasyków. Zero paraliżu decyzyjnego. 
 
@@ -18,7 +18,7 @@ Ta aplikacja przyda się, kiedy **nie potrafisz się zdecydować, co obejrzeć**
 <img width="1136" height="374" alt="image" src="https://github.com/user-attachments/assets/edbf26c3-484c-4f7f-a586-8ab0da18f838" />
 
 
-Nastrój, dekada, długość. Trzy suwaki decyzyjności, żebyś mogła udawać, że to Ty wybierasz, a nie ślepy los.
+Nastrój, dekada, długość. Trzy suwaki decyzyjności, żeby móc udawać, że to Ty wybierasz, a nie ślepy los.
 
 ## …i kliknij „Losuj”
 
