@@ -2,7 +2,7 @@
 
 *Bo od trzydziestu minut scrollujesz Netflixa i dalej nic.*
 
-Ta aplikacja rozwiązuje dokładnie jeden problem: **nie potrafisz się zdecydować, co obejrzeć**. Zamiast przeglądać katalog po raz siedemnasty, ustawiasz nastrój, dekadę i długość, klikasz jeden przycisk iiii już, decyzja podjęta za Ciebie, obwiniaj apkę, nie siebie.
+Ta aplikacja przyda się, kiedy **nie potrafisz się zdecydować, co obejrzeć**. Zamiast przeglądać katalog po raz siedemnasty, ustawiasz nastrój, dekadę i długość, klikasz jeden przycisk iiii już, decyzja podjęta za Ciebie, obwiniaj apkę, nie siebie.
 
 130 polskich klasyków. Zero paraliżu decyzyjnego. 
 
