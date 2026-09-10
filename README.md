@@ -54,6 +54,10 @@ streamlit run app.py
 
 Każdy kolejny push na `main` przebudowuje appkę samodzielnie.
 
+### Wersja na Power Apps
+
+Ta sama kartoteka istnieje też jako canvas app — z plakatami, ocenami i recenzjami na SharePoincie. Kod obu aplikacji Power Apps, razem z instrukcją wklejania i opisem list SharePoint, leży w [`powerapps/`](powerapps/).
+
 ---
 
 *Made with 🎬, Streamlit i lekką obsesją na punkcie polskiego kina.*
