@@ -25,6 +25,12 @@ Gra na spotkanie zespołu. Koło losuje **kategorię**, z kategorii leci **pytan
 
 Gotowe pliki do importu leżą w [`sharepoint/`](sharepoint/). `ID` nadaje SharePoint, w plikach go nie ma.
 
+**Dane przykładowe są zmyślone.** Nazwiska w `Team_Members.xlsx` nie należą do żadnych prawdziwych osób — repozytorium jest publiczne, więc podmień je na własne dopiero na swoim SharePoincie. Pytania w `Pytania_Kolo_Fortuny.xlsx` to 72 pozycje w pięciu kategoriach: część własna, część zainspirowana typowymi listami icebreakerów („latanie czy niewidzialność", „tylko szeptać czy tylko krzyczeć", „cztery dni po dziesięć godzin czy pięć po osiem").
+
+## Dźwięk
+
+Ekran `Wybory` odwołuje się do zasobu `Spin1` — dźwięku kręcącego się koła, startującego i gasnącego razem z animacją. Plik i instrukcja podpięcia leżą w [`media/`](media/), bo Power Apps nie eksportuje zasobów Media przez schowek YAML.
+
 ## Koło jest z CSS, nie z SVG
 
 `HtmlViewer` wycina `<svg>` w całości — bez błędu, po prostu nic nie widać. Koło jest więc złożone z tego, co kontrolka przepuszcza:

@@ -69,4 +69,8 @@ If(IsBlank(ListaFilmów.SearchText), colFilmyAZ,
 
 ## Zasoby multimedialne
 
-Ekrany odwołują się do plików wgranych w Studiu przez **Media**: `giphy (6)` (animacja przy losowaniu) i `cat popcorn` (kot na ekranie oceny). Po wklejeniu YAML-a te właściwości zaświecą się na czerwono, dopóki nie wgrasz własnych plików i nie wskażesz ich z listy.
+Ekrany odwołują się do dwóch plików wgranych w Studiu przez **Media**: `giphy (6)` (animacja przy losowaniu) i `cat popcorn` (kot na ekranie oceny). Same pliki i instrukcja podpięcia leżą w [`media/`](media/) — Power Apps nie eksportuje ich przez schowek YAML, więc do kodu trafia sama nazwa odwołania. Po wklejeniu ekranów te właściwości świecą na czerwono, dopóki nie wgrasz plików.
+
+## Dane przykładowe
+
+Nazwiska w [`sharepoint/Recenzje.xlsx`](sharepoint/Recenzje.xlsx) są **zmyślone** — to nie są prawdziwe osoby. Repozytorium jest publiczne, więc nie ma tu niczyich danych.
